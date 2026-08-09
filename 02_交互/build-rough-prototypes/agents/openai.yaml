@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Figma-Based Rough Prototypes"
+  short_description: "基于 Figma 原稿生成同画板、主流程完整、超高还原的三套 HTML 粗方案"
+  default_prompt: "Use $build-rough-prototypes to build one ultra-high-fidelity HTML board with three complete main-flow directions and concise Chinese boundary annotations."

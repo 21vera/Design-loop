@@ -1,0 +1,3 @@
+---
+redirect: /zh/design/introduction
+---
