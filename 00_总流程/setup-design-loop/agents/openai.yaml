@@ -1,0 +1,4 @@
+interface:
+  display_name: "Setup Design Loop"
+  short_description: "自动安装并连接 Design Loop、Figma、Mobbin 与外部依赖"
+  default_prompt: "请自动安装并连接这个 Design Loop 包；只在登录或授权必须由我完成时再提示我。"
