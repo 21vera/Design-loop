@@ -29,12 +29,11 @@ description: 自动安装、连接、检查并启动 Design Loop 准备包，验
 
 - 优先使用当前 Codex 环境的标准 Skill 安装方式。
 - 目标目录使用当前环境的 Codex Skill 目录；不硬编码某个用户的绝对路径。
-- 安装依赖清单中的全部“包内 Skill”，保留原文件夹名。
+- 安装依赖清单中的全部"包内 Skill"，保留原文件夹名。
 - 目标位置存在同名 Skill 时，先比较内容；未经用户确认不覆盖不同版本。
 - 安装后验证每个 `SKILL.md` 可读，且 frontmatter `name` 与文件夹名一致。
-- 确认 `frontend-design` 及其许可文件已一并安装。
 - 确认 `03_视觉/develop-visual-solution/references` 下的视觉预期卡、通用视觉规范、图表选型、结构健壮性检查项均可读。
-- 不安装 `ui-ux-pro-max`（已移出流程，原因见依赖清单）。Python 仍需检查，但只作为 Agent Reach 的前置，见下方「Agent Reach」。
+- 不安装 `frontend-design`（已移出包，原因见总流程「通用设计知识的使用边界」）；不安装 `ui-ux-pro-max`（已移出流程，原因见依赖清单）。Python 仍需检查，但只作为 Agent Reach 的前置，见下方「Agent Reach」。
 
 ## 检查外部能力
 
@@ -85,8 +84,7 @@ Product Design：ideate 可用 / image-to-code 不可用 / audit 可用
 - **先查 Python 前置**：运行 `python3 --version`。Agent Reach 是 Python 包，要求 **≥ 3.10**。
   - macOS 默认不带可用 Python，`/usr/bin/python3` 只是会弹 Xcode 安装框的占位符。
   - 版本不足或没有 Python 时，**这一步 AI 无法代劳**（涉及系统级安装、GUI 弹窗或管理员密码）。按 [`../../02_交互/agent-reach/安装说明.md`](../../02_交互/agent-reach/安装说明.md) 把安装命令给用户，请其执行后回来复检。
-- Python 就绪后，从包内离线源安装：`pipx install ./02_交互/agent-reach/runtime`（无 pipx 时用 `python3 -m pip install --user`）。不需要联网拉 GitHub。
-- 运行 `agent-reach doctor --json`，至少确认通用搜索与网页阅读能力可用；社交、视频等 channel 按本次研究需要检查，未配置的标注为"未配置"，不阻塞 Step 0。
+- Python 就绪后，校验已安装的 Agent Reach CLI：运行 `agent-reach doctor --json`，至少确认通用搜索与网页阅读能力可用；CLI 未安装时按 [`安装说明.md`](../../02_交互/agent-reach/安装说明.md) 从上游项目安装（本包不再内嵌 runtime 源码）。社交、视频等 channel 按本次研究需要检查，未配置的标注为"未配置"，不阻塞 Step 0。
 - **Agent Reach 最终不可用时不阻塞整条流程**：按安装说明的降级路径，改用当前环境可用的联网能力完成调研，并在内部记录"证据来源受限"。不得静默跳过市场调研，也不得编造来源。
 
 ### HTML 粗原型
@@ -105,27 +103,27 @@ Product Design：ideate 可用 / image-to-code 不可用 / audit 可用
 ### 硬门槛（不满足不得进入 Step 1）
 
 - 依赖清单中的包内 Skill 全部安装且通过基本校验。
-- `frontend-design` 完整可读；`references` 下四份视觉材料（视觉预期卡、通用视觉规范、图表选型、结构健壮性检查项）完整可读。
+- `references` 下四份视觉材料（视觉预期卡、通用视觉规范、图表选型、结构健壮性检查项）完整可读。
 - Product Design 三个工作流**已逐个探测并把结果写进 Case 标记**。探测本身必须完成；**探测结果为"不可用"不算未通过**（非 Codex 环境的正常情况）。
 - Figma 账号已授权，读取和写入工具均可用。
 - 能读取 `Seller Center Library` 的 `✅ Design Token 设计令牌` 页（node `1:2`）——这是每次出图的强制前置，读不到则整个视觉阶段不可用。
 - 本地 HTML 粗原型可打开和检查。
 - 桌面可创建独立 Case 根目录，且真实 Case 不写入 Design Loop 源包。
 
-### 软门槛（不满足可继续，但必须先问用户并记录标记）
+### 软门槛（不满足可继续，但必须先记录标记）
 
-Mobbin 与 Agent Reach 是市场调研的两个证据来源。Step 0 尽力连接，**但连不上时不能自己往下走**——因为 Step 2 有三处完成标准硬性要求"每个方向映射真实研究机制与来源"，没有证据来源就永远满足不了，会死循环。
+Mobbin 与 Agent Reach 是市场调研的两个证据来源。Step 0 尽力连接，**但连不上时不能无限卡在安装**——Step 2 的「用户确认无证据」路径允许无外部证据反推方案。
 
 **处理方式：**
 
 1. 两个都连上 → 写标记 `市场证据来源：已连接（Mobbin ✓ / Agent Reach ✓）`，Step 2 的研究映射约束**照常全部生效**。
 2. 有一个连不上 → 用另一个继续，写标记记录哪个缺，并在研究结论中标注证据覆盖不足。
-3. **两个都连不上 → 必须问用户一次**：
+3. **两个都连不上 → 一次确认式降级**：用一句话向用户说明并请求确认，不无限等待安装：
    ```
    Mobbin 与 Agent Reach 均未连接，本次将没有外部市场证据，三个方案方向会改为从现有页面和 Step 1 痛点反推。确认这样继续吗？
    ```
    - 用户确认 → 写标记 `市场证据来源：用户确认无证据`，Step 2 下游约束按标记切换（见 `research-market-solutions`、`explore-interaction-directions`、`build-rough-prototypes` 的对应条款）。
-   - 用户不确认 → 停在 Step 0，按 [`../../02_交互/agent-reach/安装说明.md`](../../02_交互/agent-reach/安装说明.md) 协助装好再继续。
+   - 用户不确认 → 停在 Step 0，按 [`../../02_交互/agent-reach/安装说明.md`](../../02_交互/agent-reach/安装说明.md) 协助装好再继续；用户未答复前不阻塞其他可执行工作。
 
 **不得在用户未确认的情况下自行降级，也不得因为工具缺失就编造来源。** 其他非本次所需 channel 可标注为未配置，不触发上述询问。
 
