@@ -292,4 +292,4 @@ const [loading, setLoading] = useState(false);
 ## 文档维护
 
 - 2026-06-03 创建 (Phase 6) — 写完 8 节 + Code Connect + Excel 已更新。
-- 历史教训写进 [`AI操作手册/导入新组件的完整流程.md`](../../../_建设参考/导入新组件的完整流程.md) 铁律 #6a + #6b: 建 ComponentSet 前必扒旧库 effects/colors/labels；Figma 现有 icon 必须用 ID + getNodeByIdAsync 查 (孤儿 master parent=null findAll 找不到)。
+- 历史教训写进 `AI操作手册/导入新组件的完整流程.md` 铁律 #6a + #6b: 建 ComponentSet 前必扒旧库 effects/colors/labels；Figma 现有 icon 必须用 ID + getNodeByIdAsync 查 (孤儿 master parent=null findAll 找不到)。（`_建设参考` 已于 2026-08-10 移出包，归档在包外 `Design-loop-归档/_建设参考/`）

@@ -230,7 +230,7 @@ Base 层只是色板，没有语义——今天 `Orange/6` 是主色，主色改
 | `screenXL` | 1200 | | `screenXLMax` | 1599 |
 | `screenXXL` | 1600 | | | |
 
-各 `screenXMin` 指向对应的 `screenX`。L3 规定仅 desktop、只考虑浏览器宽度自适应，断点主要用于确认目标视口。
+各 `screenXMin` 指向对应的 `screenX`。L3 规定桌面 Web 为当前基准，断点主要用于确认目标视口；Seller APP / Shopee APP 等移动端按对应设计规范执行，不直接套用桌面断点。
 
 ### 间距
 
