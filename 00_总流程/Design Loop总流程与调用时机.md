@@ -55,7 +55,7 @@ Product Design 是 Codex 环境的插件，**按 Step 0 的探测结果决定是
 
 **Shopee 未覆盖的部分必须补足，不能因为"规范里没写"就跳过或随意处理。** 发现规范留白且反复出现时，记录下来作为 Shopee 设计系统的补充需求。
 
-`frontend-design` **不在任何一步强制读取**，也不在包内保留——它的写作原则已全部内化到 `clarify-product-requirement` 的文案澄清和 `通用视觉规范` §六，读原文属于重复；且其色彩自选、字体配对、aesthetic risk、signature element、hero 主张、动效编排和移动端响应式等主张与本项目的 Token 锁定、组件库锁定、仅 desktop 约束直接冲突，读进来只会污染判断。
+`frontend-design` **不在任何一步强制读取**，也不在包内保留——它的写作原则已全部内化到 `clarify-product-requirement` 的文案澄清和 `通用视觉规范` §六，读原文属于重复；且其色彩自选、字体配对、aesthetic risk、signature element、hero 主张、动效编排和移动端响应式等主张与项目当前的 Token 锁定、组件库锁定直接冲突，读进来只会污染判断。**范围说明**：本包视觉规范以 Seller Centre Web（桌面 Web）为当前基准；Seller APP / Shopee APP 等移动端按各自对应设计规范执行。
 
 ### 交付前自检与回环
 
