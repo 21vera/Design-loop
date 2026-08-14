@@ -84,8 +84,8 @@ Product Design：ideate 可用 / image-to-code 不可用 / audit 可用
 - **先查 Python 前置**：运行 `python3 --version`。Agent Reach 是 Python 包，要求 **≥ 3.10**。
   - macOS 默认不带可用 Python，`/usr/bin/python3` 只是会弹 Xcode 安装框的占位符。
   - 版本不足或没有 Python 时，**这一步 AI 无法代劳**（涉及系统级安装、GUI 弹窗或管理员密码）。按 [`../../02_交互/agent-reach/安装说明.md`](../../02_交互/agent-reach/安装说明.md) 把安装命令给用户，请其执行后回来复检。
-- Python 就绪后，校验已安装的 Agent Reach CLI：运行 `agent-reach doctor --json`，至少确认通用搜索与网页阅读能力可用；CLI 未安装时按 [`安装说明.md`](../../02_交互/agent-reach/安装说明.md) 从上游项目安装（本包不再内嵌 runtime 源码）。社交、视频等 channel 按本次研究需要检查，未配置的标注为"未配置"，不阻塞 Step 0。
-- **Agent Reach 最终不可用时不阻塞整条流程**：按安装说明的降级路径，改用当前环境可用的联网能力完成调研，并在内部记录"证据来源受限"。不得静默跳过市场调研，也不得编造来源。
+- Python 就绪后，**一键安装并校验** Agent Reach CLI：先 `which agent-reach` 检测，已装则直接 `agent-reach doctor --json` 复检；未装则按 [`安装说明.md`](../../02_交互/agent-reach/安装说明.md) 的一键脚本从上游安装（本包不再内嵌 runtime 源码）。`doctor --json` 必须**返回真实 JSON 结果**且通用搜索、网页阅读可用；社交、视频等 channel 未配置的标注"未配置"，不阻塞 Step 0。
+- **doctor 未通过 = agent-reach 不可用**：research 开始前须明确告知用户"agent-reach 不可用，本次仅用 Mobbin 或降级为无证据"，不得静默跳过、不得假装已调用。
 
 ### HTML 粗原型
 
