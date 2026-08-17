@@ -235,7 +235,7 @@ Product Design 是 Codex 环境的插件，**按 Step 0 的探测结果决定是
 
 1. **设计规范门禁**（见上文「设计规范门禁」）：完整读取 [`L1_原子变量`](../03_视觉/Shopee设计系统/L1_原子变量/README.md) 与 Figma `✅ Design Token 设计令牌` 页（node `1:2`）。未完成不得进入后续任何一项。
 2. [`develop-visual-solution`](../03_视觉/develop-visual-solution/SKILL.md)
-3. 重新读取用户授权的原 Figma 目标节点，锁定要复制的 Frame、允许变化区域和可复用结构；选定粗方案只锁定交互机制、主流程、信息层级与业务规则，不作为视觉像素来源。
+3. 核对 Step 1 落盘的基线元数据（`04_Figma/原稿基线/meta.json` 的 lastModified/version），未变化则复用基线结构树与 2× 原图、不重读原节点；变化则重新导出。锁定要复制的 Frame、允许变化区域和可复用结构；选定粗方案只锁定交互机制、主流程、信息层级与业务规则，不作为视觉像素来源。
 4. Product Design（仅当 Step 0 标记 `ideate` 可用）：先读取 `product-design:index` 路由，再调用 `product-design:ideate`；只读取入口不算完成。标记不可用时跳过。此调用只做内部承载检查，不生成需用户再次选择或需独立精修、独立 QA 的中间视觉稿。
 5. Figma 读写能力：Product Design 环节完成后（可用则调用成功、不可用则已跳过）立即在 Figma 中复制原 Frame 并原生搭建，不先把粗方案做成一张完美图片再复刻。
 6. 有对应页面时读取 [`L4_现有页面`](../03_视觉/Shopee设计系统/L4_现有页面/)
@@ -270,9 +270,9 @@ Product Design 是 Codex 环境的插件，**按 Step 0 的探测结果决定是
 3. Product Design（按 Step 0 标记）：检查已有方案调用 `product-design:audit`；需要生成或更新视觉稿时再调用 `product-design:ideate`。每次出图都必须重新成功调用。
 4. Figma 读写能力
 5. [`QA执行方式`](QA执行方式.md)
-6. 本次涉及的 Shopee Guideline、组件文档与 [`通用视觉规范`](../03_视觉/develop-visual-solution/references/通用视觉规范.md)
+6. 本轮反馈命中项涉及的 Shopee Guideline、组件文档与 [`通用视觉规范`](../03_视觉/develop-visual-solution/references/通用视觉规范.md)（全量清单仅定稿轮跑，见 QA执行方式 五.1）
 7. 在同一视口、同一状态对修改前原稿和修改后产出执行超高还原比对，未反馈区域出现差异时恢复原稿
-8. 交付前自检，未通过则继续循环（见上文「交付前自检与回环」）
+8. 交付前自检（每轮收敛为受影响项 + A 组红线 + 图片完整性，定稿轮全量），未通过则继续循环（见上文「交付前自检与回环」）
 
 **输出**
 
